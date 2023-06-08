@@ -1,0 +1,2 @@
+
+openssl x509 -in *****.cer  -inform der  -text -noout

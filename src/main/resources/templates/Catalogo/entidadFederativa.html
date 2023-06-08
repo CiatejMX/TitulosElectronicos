@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistema Ventas Laravel Vue Js- IncanatoIT">
+    <meta name="author" content="Incanatoit.com">
+    <meta name="keyword" content="Sistema ventas Laravel Vue Js, Sistema compras Laravel Vue Js">
+    <link rel="shortcut icon" href="vendors/img/favicon.png">
+    <title>Sistema e-titulos</title>
+    <!-- Icons -->
+    <link href="/vendors/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/vendors/css/simple-line-icons.min.css" rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="/vendors/css/style.css" rel="stylesheet">
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <header class="app-header navbar" th:replace="plantilla :: header">
+        
+    </header>
+
+    <div class="app-body" id="app" >
+                 
+         <div th:replace="plantilla :: menu"></div>
+         
+          <main class="main">
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item"><a href="#">Catalogos</a></li>
+                <li class="breadcrumb-item active">Entidad Federativa</li>
+            </ol>
+            <div class="container-fluid">
+                <!-- Ejemplo de tabla Listado -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> 
+                       
+                    </div>
+                    <div class="card-body">
+                       
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>ID</th>
+                                    <th>Nombre Entidad</th>
+                                    <th>Abr entida</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  th:each="ef : ${efs}">
+                                    <td>
+                                     
+                                    </td>
+                                    <td th:text="${ef.identidadfederativa}">row.identidadfederativa</td>
+                                    <td th:text="${ef.c_nom_ent}"></td>
+                                    <td th:text="${ef.c_entidad_abr}">row.c_entidad_abr</td>
+                                  
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+                <!-- Fin ejemplo de tabla Listado -->
+            </div>
+            <!--Inicio del modal agregar/actualizar-->
+            <div class="modal fade" id="modalNuevo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-primary modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Agregar categoría</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de categoría">
+                                        <span class="help-block">(*) Ingrese el nombre de la categoría</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
+                                    <div class="col-md-9">
+                                        <input type="email" id="descripcion" name="descripcion" class="form-control" placeholder="Enter Email">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!--Fin del modal-->
+          
+        </main>
+        <!-- /Fin del contenido principal -->
+         
+    </div>
+
+    
+ <footer th:replace="plantilla :: footer"></footer>
+   
+</body>
+
+</html>

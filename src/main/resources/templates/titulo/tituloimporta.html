@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistema Ventas Laravel Vue Js- IncanatoIT">
+    <meta name="author" content="Incanatoit.com">
+    <meta name="keyword" content="Sistema ventas Laravel Vue Js, Sistema compras Laravel Vue Js">
+    <link rel="shortcut icon" href="vendors/img/favicon.png">
+    <title>Sistema e-titulos</title>
+    <!-- Icons -->
+    <link href="/vendors/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/vendors/css/simple-line-icons.min.css" rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="/vendors/css/style.css" rel="stylesheet">
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <header class="app-header navbar" th:replace="plantilla :: header">
+        
+    </header>
+
+    <div class="app-body" id="app" >
+                 
+         <div th:replace="plantilla :: menu"></div>
+         
+          <main class="main">
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item"><a href="#">Catalogos</a></li>
+                <li class="breadcrumb-item ">Responsable</li>
+                <li class="breadcrumb-item active">Editar</li>
+            </ol>
+            <div class="container-fluid">
+                <!-- Ejemplo de tabla Listado -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> 
+                        
+                        <a class="btn btn-secondary" th:href="@{/titulos/}"> 
+                            <i class="icon-plus"></i>&nbsp;regresar
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                
+                              
+                                <br/><br/>
+                                <form  method="POST" th:action="@{/upload/csv/}"  enctype="multipart/form-data">
+                                
+                                <input type="file" name="file" /><br/><br/>
+                               
+                                <input class="btn btn-primary" type="submit" value="Subir" />
+                        </form>
+                       
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin ejemplo de tabla Listado -->
+            </div>
+            
+        </main>
+        <!-- /Fin del contenido principal -->
+         
+    </div>
+
+    
+ <footer th:replace="plantilla :: footer"></footer>
+   
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistema Ventas Laravel Vue Js- IncanatoIT">
+    <meta name="author" content="Incanatoit.com">
+    <meta name="keyword" content="Sistema ventas Laravel Vue Js, Sistema compras Laravel Vue Js">
+    <link rel="shortcut icon" href="vendors/img/favicon.png">
+    <title>Sistema e-titulos</title>
+    <!-- Icons -->
+    <link href="/vendors/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/vendors/css/simple-line-icons.min.css" rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="/vendors/css/style.css" rel="stylesheet">
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <header class="app-header navbar" th:replace="plantilla :: header">
+        
+    </header>
+
+    <div class="app-body" id="app" >
+                 
+         <div th:replace="plantilla :: menu"></div>
+         
+          <main class="main">
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item"><a href="#">Catalogos</a></li>
+                <li class="breadcrumb-item "><a th:href="@{/catalogo/usuario}" >Usuario </a></li>
+                <li class="breadcrumb-item active">Editar</li>
+            </ol>
+            <div class="container-fluid">
+                <!-- Ejemplo de tabla Listado -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> 
+                        
+                        <a class="btn btn-secondary" th:href="@{/catalogo/usuario}"> 
+                            <i class="icon-plus"></i>&nbsp;regresar
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                
+                                <form th:action="@{/catalogo/usuario/guardar}" method="post" th:object="${Usuario}">
+                            <input type="hidden" name="idusuario" th:field="*{idusuario}"/>
+                                
+                               
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6 ">
+                                        <span class="input-group-text " id="basic-addon1">Username</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="user" th:field="*{user}"/>
+                                </div>
+                             <div class="input-group">
+                                    <div class="input-group-prepend col-md-6 ">
+                                        <span class="input-group-text " id="basic-addon1">Nombre Completo</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="nombre" th:field="*{nombre}"/>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Nomina</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="nomina" th:field="*{nomina}"/>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Correo</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="correo" th:field="*{correo}"/>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Password</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="password" name="password" th:field="*{password}"/>
+                                    
+                                </div>
+                     
+                                 
+                               <button type="submit" class="btn btn-primary">Guardar</button>
+                       </form>   
+                                <br/><br/>
+                                <form method="POST" th:action="@{/catalogo/roles/guardar/}" >
+                                 <input type="hidden" name="idusuario" th:value="${Usuario.idusuario}"/>
+                                    <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Agregar Rol</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="nombre"  >
+                                      
+                                      <option value="ROLE_ADMIN">Administrador</option>
+                                      <option value="ROLE_USER">Usuario</option>
+                                      <option value="ROLE_SIGN">Firmante</option>
+                                      <option value="GUEST">Invitado</option>
+                                    </select>                                          
+                                        <button type="submit" class="btn btn-primary"> <span class="fa fa-plus-circle" ></span> </button>
+                                      
+                                    </select>
+                                </div>     
+                       
+                                </form>
+                                
+                                  <table class="table table-bordered table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>ID</th>
+                                                <th>Rol</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr  th:each="rol : ${Roles}">
+                                                <td>
+
+                                                    
+                                                     <a class="btn btn-danger btn-sm" th:href="@{/catalogo/roles/eliminar(id=${rol.id})}" />
+                                                      <i class="icon-trash"></i>
+                                                </td>
+                                                <td th:text="${rol.id}"></td>
+                                                <td th:text="${rol.nombre}"></td>
+                                                <td th:text="${rol.idusuario}"></td>
+                                                
+
+
+
+
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                       
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin ejemplo de tabla Listado -->
+            </div>
+            
+        </main>
+        <!-- /Fin del contenido principal -->
+         
+    </div>
+
+    
+ <footer th:replace="plantilla :: footer"></footer>
+   
+</body>
+
+</html>

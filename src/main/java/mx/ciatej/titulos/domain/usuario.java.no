@@ -1,0 +1,28 @@
+package mx.ciatej.titulos.domain;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "usuario")
+public class Usuario implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idusuario;
+    private String nombre;
+    private String nomina;
+    private String user;
+    private String password;
+    private String correo;
+    private String activo;
+    
+    
+    
+    
+    
+}

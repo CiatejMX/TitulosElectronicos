@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistema Ventas Laravel Vue Js- IncanatoIT">
+    <meta name="author" content="Incanatoit.com">
+    <meta name="keyword" content="Sistema ventas Laravel Vue Js, Sistema compras Laravel Vue Js">
+    <link rel="shortcut icon" href="vendors/img/favicon.png">
+    <title>Sistema e-titulos</title>
+    <!-- Icons -->
+    <link href="/vendors/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/vendors/css/simple-line-icons.min.css" rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="/vendors/css/style.css" rel="stylesheet">
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <header class="app-header navbar" th:replace="plantilla :: header">
+        
+    </header>
+
+    <div class="app-body" id="app" >
+                 
+         <div th:replace="plantilla :: menu"></div>
+         
+          <main class="main">
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item"><a href="#">Catalogos</a></li>
+                <li class="breadcrumb-item ">Titulo</li>
+                <li class="breadcrumb-item active">Editar</li>
+            </ol>
+            <div class="container-fluid">
+                <!-- Ejemplo de tabla Listado -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> 
+                        
+                        <a class="btn btn-secondary" th:href="@{/titulo/}"> 
+                            <i class="icon-plus"></i>&nbsp;regresar
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-10">
+                                
+                                <form th:action="@{/titulo/guardar}" method="post" th:object="${titulo}">
+                            <input type="hidden" name="idtitulo" th:field="*{idtitulo}"/>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">CURP</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="curp" th:field="*{curp}"/>
+                                    <span th:if="${#fields.hasErrors('curp')}" th:errors="*{curp}">Error curp</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Nombre</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="nombre" th:field="*{nombre}"/>
+                                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Primer Apellido</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="primerapellido" th:field="*{primerapellido}"/>
+                                    <span th:if="${#fields.hasErrors('primerapellido')}" th:errors="*{primerapellido}">Error primerapellido</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Segundo Apellido</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="segundoapellido" th:field="*{segundoapellido}"/>
+                                    <span th:if="${#fields.hasErrors('segundoapellido')}" th:errors="*{segundoapellido}">Error segundoapellido</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Correo Electronico</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="correoelectronico" th:field="*{correoelectronico}"/>
+                                    <span th:if="${#fields.hasErrors('correoelectronico')}" th:errors="*{correoelectronico}">Error correoelectronico</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Carrera</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="institucioncarrera" th:field="*{institucioncarrera}">
+                                      <option th:each="opc : ${institucioncarreras}" 
+                                              th:value="${opc.idinstitucioncarrera}" th:text="${opc.carrera.nombre_carrera}"  
+                                                      />                                                 
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('institucioncarrera')}" th:errors="*{institucioncarrera}">Error identidadfederativa_procedencia</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Fecha Inicio</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="date" name="fechainicio" th:field="*{fechainicio}"/>
+                                    <span th:if="${#fields.hasErrors('fechainicio')}" th:errors="*{fechainicio}">Error fechainicio</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Fecha Terminacion</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="date" name="fechaterminacion" th:field="*{fechaterminacion}"/>
+                                    <span th:if="${#fields.hasErrors('fechaterminacion')}" th:errors="*{fechaterminacion}">Error fechaterminacion</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Fecha Expedicion</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="date" name="fechaexpedicion" th:field="*{fechaexpedicion}"/>
+                                    <span th:if="${#fields.hasErrors('fechaexpedicion')}" th:errors="*{fechaexpedicion}">Error fechaexpedicion</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Modalidad Titulacion</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="modalidadtitulacion" th:field="*{modalidadtitulacion}">
+                                      <option th:each="opc : ${modalidadtitulacion}" 
+                                              th:value="${opc.id_modalidad_titulacion}" th:text="${opc.modalidad_titulacion}"  
+                                              
+                                      />                                                 
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('modalidadtitulacion')}" th:errors="*{modalidadtitulacion}">Error idmodalidadtitulacion</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Fecha examen prof.</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="date" name="fechaexamenprofesional" th:field="*{fechaexamenprofesional}"/>
+                                    <span th:if="${#fields.hasErrors('fechaexamenprofesional')}" th:errors="*{fechaexamenprofesional}">Error fechaexamenprofesional</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Cumplimiento Servico Social</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="cumplioserviciosocial" th:field="*{cumplioserviciosocial}"/>
+                                    <span th:if="${#fields.hasErrors('cumplioserviciosocial')}" th:errors="*{cumplioserviciosocial}">Error cumplioserviciosocial</span>
+                                </div>
+                            
+                
+                                
+                                 <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Fundamento Servicio Social</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="fundamentoLegalServicioSocial" th:field="*{fundamentoLegalServicioSocial}">
+                                      <option th:each="opc : ${fundamentolegalserviciosocial}" 
+                                              th:value="${opc.id_fundamento_legal_servicio_social}" th:text="${opc.fundamento_legal_servicio_social}"  
+                                                       />                                                 
+                                    </select>
+                                     <span th:if="${#fields.hasErrors('fundamentoLegalServicioSocial')}" th:errors="*{fundamentoLegalServicioSocial}">Error idfundamentolegalserviciosocial</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Entidad Federativa titulo</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="entidadFederativa" th:field="*{entidadFederativa}">
+                                      <option th:each="opc : ${entidadfederativa}" 
+                                              th:value="${opc.identidadfederativa}" th:text="${opc.c_nom_ent}"  
+                                                      />                                                 
+                                    </select>
+                                     <span th:if="${#fields.hasErrors('entidadFederativa')}" th:errors="*{entidadFederativa}">Error identidadfederativa</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Institucion procedencia</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="institucionprocedencia" th:field="*{institucionprocedencia}"/>
+                                    <span th:if="${#fields.hasErrors('institucionprocedencia')}" th:errors="*{institucionprocedencia}">Error institucionprocedencia</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Entidad Federativa procedencia</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="entidadFederativa_procedencia" th:field="*{entidadFederativa_procedencia}">
+                                      <option th:each="opc : ${entidadfederativa}" 
+                                              th:value="${opc.identidadfederativa}" th:text="${opc.c_nom_ent}"  
+                                                      />                                                 
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('entidadFederativa_procedencia')}" th:errors="*{entidadFederativa_procedencia}">Error identidadfederativa_procedencia</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Fecha inicio inst. procedencia</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="date" name="fechainicio_procedencia" th:field="*{fechainicio_procedencia}"/>
+                                    <span th:if="${#fields.hasErrors('fechainicio_procedencia')}" th:errors="*{fechainicio_procedencia}">Error fechainicio_procedencia</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Fecha fin inst. procedencia</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="date" name="fechaterminacion_procedencia" th:field="*{fechaterminacion_procedencia}"/>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Numero Cedula</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="nocedula" th:field="*{nocedula}"/>
+                                    <span th:if="${#fields.hasErrors('nocedula')}" th:errors="*{nocedula}">Error nocedula</span>
+                                </div>
+                                 <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Tipo estudio antecedente</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="tipostudioAntecedente" th:field="*{tipostudioAntecedente}">
+                                      <option th:each="opc : ${tipostudioAntecedentes}" 
+                                              th:value="${opc.id_tipo_estudio_antecedente}" th:text="${opc.tipo_estudio_antecedente}"  
+                                                      />                                                 
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('tipostudioAntecedente')}" th:errors="*{tipostudioAntecedente}">Error identidadfederativa_procedencia</span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Autorizacion Reconocimiento</span>
+                                    </div>
+                                    
+                                    <select class="form-control col-md-6"  name="tipostudioAntecedente" th:field="*{autorizacionReconocimiento}">
+                                      <option th:each="opc : ${autorizacionReconocimientos}" 
+                                              th:value="${opc.id_autorizacion_reconocimiento}" th:text="${opc.autorizacion_reconocimiento}"  
+                                                      />                                                 
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('autorizacionReconocimiento')}" th:errors="*{autorizacionReconocimiento}">Error identidadfederativa_procedencia</span>
+                                </div>
+                                 <div class="input-group">
+                                    <div class="input-group-prepend col-md-6">
+                                        <span class="input-group-text" id="basic-addon1">Lote</span>
+                                    </div>
+                                    <input class="form-control col-md-6" type="text" name="lote" th:field="*{lote}"/>
+                                    <span th:if="${#fields.hasErrors('lote')}" th:errors="*{lote}">Error lote</span>
+                                </div>
+                            
+                            
+                            
+                                                               <button type="submit" class="btn btn-primary">Guardar</button>
+                       </form>   
+                       
+                       
+                       
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin ejemplo de tabla Listado -->
+            </div>
+            
+        </main>
+        <!-- /Fin del contenido principal -->
+         
+    </div>
+
+    
+ <footer th:replace="plantilla :: footer"></footer>
+   
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TituloElectronico xmlns="https://www.siged.sep.gob.mx/titulos/" version="1.0" folioControl="2sdgdsfg">
+    <Institucion cveInstitucion="140349" nombreInstitucion="CENTRO DE INVESTIGACIÓN Y ASISTENCIA EN TECNOLOGÍA Y DISEÑO DEL ESTADO DE JALISCO, A.C."/>
+    <Carrera cveCarrera="411598" nombreCarrera="MAESTRÍA EN INVESTIGACIÓN CLÍNICA" fechaInicio="2020-03-01-06:00" autorizacionReconocimiento="jjjj"/>
+    <Profesionista curp="sdgdsfg" nombre="Manuel" primerApellido="Lopez" segundoApellido="Pereira"/>
+    <Expedicion fechaExpedicion="2020-03-18-06:00" idModalidadTitulacion="2" modalidadTitulacion="POR PROMEDIO" fechaExamenProfesional="2020-03-17-06:00" cumplioServicioSocial="1" idFundamentoLegalServicioSocial="3" fundamentoLegalServicioSocial="ART. 91 RLRART. 5 CONST" idEntidadFederativa="15" entidadFederativa="15"/>
+    <Antecedente institucionProcedencia="CENTRO DE INVESTIGACIÓN Y ASISTENCIA EN TECNOLOGÍA Y DISEÑO DEL ESTADO DE JALISCO, A.C." tipoEstudioAntecedente="LICENCIATURA" idEntidadFederativa="15" entidadFederativa="MÉXICO" fechaInicio="2020-03-01-06:00" fechaTerminacion="2020-03-26-06:00"/>
+</TituloElectronico>
